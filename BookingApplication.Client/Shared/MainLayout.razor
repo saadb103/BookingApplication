@@ -1,18 +1,92 @@
-﻿@inherits LayoutComponentBase
+﻿@using System.Security.Claims
+@using System.Text.Json
+@using BookingApplication.Shared.Models
+@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+<style>
+    :root {
+        --primary: @OperatorContext.PrimaryColor;
+        --primary-text-color: @OperatorContext.PrimaryTextColor;
+        --secondary: @OperatorContext.SecondaryColor;
+        --secondary-text-color: @OperatorContext.SecondaryTextColor;
+    }
+</style>
+
+<CascadingValue Value="OperatorContext">
+    <div class="page">
+        <header><Header /></header>
+        <main>@Body</main>
+        <footer></footer>
     </div>
+</CascadingValue>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+@code{
+    @* public string Token { get; set; } = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9+eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIxMzIyIiwiZXhwIjoxNjY5NDMxNjc0fQ+Mnq5Rm7Fusm1fCic3scoSHkvk2S_qD6oHnxey23ONcodtMdmz20IlVQizPUHtuFvyLTW0IdoZBDcA8Mvm999nQ"; *@
+    public string Token { get; set; } = string.Empty;
+    public OperatorContext OperatorContext { get; set; } = new OperatorContext() 
+            { PrimaryColor = "#373960", PrimaryTextColor = "#ffffff", 
+            SecondaryColor = "#ffffff", SecondaryTextColor = "#373960", CompanyEmail = "limocompanyrandom@email.com",
+            CompanyPrimaryPhone = "+ 1 (425) 555 - 26 - 71", CompanySecondaryPhone = "+ 1 (555) 666 - 22 - 11" };
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+    protected override void OnParametersSet()
+    {
+        object token = null;
+        if ((this.Body.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("Token", out token) == true)
+        {
+            Token = token?.ToString();
+            Token = Token.Replace('+', '.');
+            if (!string.IsNullOrEmpty(ExtractSystemId()))
+            {
+                GetOperatorContext();
+            }
+        }
+    }
+
+    private string ExtractSystemId()
+    {
+        try {
+            if (!string.IsNullOrEmpty(Token))
+            {
+                var user = new ClaimsPrincipal(new ClaimsIdentity(ParseClaimsFromJwt(Token), "jwt"));
+                return user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid).Value;
+            }
+            return "";
+        } catch(Exception e)
+        {
+            return "";
+        }
+    }
+
+    private async Task GetOperatorContext()
+    {
+        // an api call will be made to retrieve the operator context against the current SystemId
+
+        // sample results of the returned OperatorContext
+
+        OperatorContext = new OperatorContext() { PrimaryColor = "#373960", PrimaryTextColor = "#ffffff", SecondaryColor = "#ffffff",
+            SecondaryTextColor = "#373960", CompanyEmail = "limocompanyrandom@email.com",
+            CompanyPrimaryPhone = "+ 1 (425) 555 - 26 - 71", CompanySecondaryPhone = "+ 1 (555) 666 - 22 - 11" };
+
+        @* OperatorContext = new OperatorContext() { PrimaryColor = "#7c73e6", SecondaryColor = "#ffe9e3", CompanyEmail = "limocompanyrandom@email.com",
+            CompanyPrimaryPhone = "+ 1 (425) 555 - 26 - 71", CompanySecondaryPhone = "+ 1 (555) 666 - 22 - 11" }; *@
+    }
+
+    public static IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
+    {
+        var payload = jwt.Split('.')[1];
+        var jsonBytes = ParseBase64WithoutPadding(payload);
+        var keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
+        return keyValuePairs.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString()));
+    }
+
+    private static byte[] ParseBase64WithoutPadding(string base64)
+    {
+        switch (base64.Length % 4)
+        {
+            case 2: base64 += "=="; break;
+            case 3: base64 += "="; break;
+        }
+        return Convert.FromBase64String(base64);
+    }
+}
 
