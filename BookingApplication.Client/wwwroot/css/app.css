@@ -1,4 +1,6 @@
-﻿.valid.modified:not([type=checkbox]) {
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
 
@@ -39,3 +41,95 @@
         content: "An error has occurred."
     }
 
+/* ------------------------------------------- Global CSS ------------------------------------------- */
+
+/* ------------------------------------------- CSS Reset ------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+input, button, textarea, select {
+    font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+#root, #__next {
+    isolation: isolate;
+}
+
+/* ------------------------------------------- Buttons ------------------------------------------- */
+.ba-btn.e-btn {
+    padding: 5px 15px;
+    border-radius: 100vw;
+}
+
+.ba-btn.e-btn .ba-i.e-btn-icon.e-icon-left svg {
+    fill: var(--primary-text-color);
+}
+
+.ba-btn.e-btn:hover {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.ba-btn.e-btn:hover .ba-i.e-btn-icon.e-icon-left svg {
+    fill: var(--secondary-text-color);
+}
+
+.ba-btn.e-btn.ba-btn-action {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+
+    color: var(--secondary-text-color);
+}
+
+.ba-btn.e-btn.ba-btn-action .ba-i.e-btn-icon.e-icon-left svg {
+    fill: var(--secondary-text-color);
+}
+
+.ba-btn.e-btn.ba-btn-action:hover {
+    background-color: var(--primary);
+    color: var(--primary-text-color);
+}
+
+.ba-btn.e-btn.ba-btn-action:hover .ba-i.e-btn-icon.e-icon-left svg {
+    fill: var(--primary-text-color);
+}
+
+.ba-btn-round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.e-btn.ba-btn-round svg {
+    fill: var(--secondary);
+}
+
+
+/* ------------------------------------------- Icons ------------------------------------------- */
+.ba-i {
+    background-repeat: no-repeat;
+}
+
+.ba-i.e-btn-icon.e-icon-left {
+    margin-left: 0;
+    margin-right: 10px;
+
+    width: fit-content;
+}

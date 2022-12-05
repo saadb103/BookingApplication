@@ -1,0 +1,48 @@
+.header {
+    display: flex;
+
+    padding: 25px 156px 20px 156px;
+    background-color: var(--primary);
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    cursor: pointer;
+}
+
+.logo span {
+    font-weight: 600;
+    font-size: 33px;
+    line-height: 41px;
+    color: var(--primary-text-color);
+}
+
+.logo svg {
+    fill: var(--primary-text-color);
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: end;
+}
+
+.social-actions ::deep button:last-child {
+    margin-left: 15px;
+}
+
+.app-actions {
+    display: flex;
+    gap: 15px;
+}
