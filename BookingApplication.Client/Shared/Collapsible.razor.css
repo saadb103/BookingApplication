@@ -15,10 +15,6 @@
 
     background-color: var(--accent);
 
-    font-weight: 400;
-    font-size: 20px;
-    color: #0A0A0B;
-
     box-shadow: none;
 }
 
@@ -32,11 +28,21 @@
     background-color: var(--accent);
 }
 
+.collapsible ::deep .e-accordion .e-acrdn-item .e-acrdn-panel .e-acrdn-content {
+    padding-bottom: 20px;
+}
+
 .header {
     display: flex;
     gap: 12px;
     align-items: center;
 }
+
+    .header > .title {
+        font-weight: 400;
+        font-size: 20px;
+        color: #0A0A0B;
+    }
 
 .body {
     padding-left: 72px;

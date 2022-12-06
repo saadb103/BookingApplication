@@ -13,7 +13,7 @@
                     </div>
                 </HeaderTemplate>
                 <ContentTemplate>
-                    <div class="body">
+                    <div class="body" style="@BodyStyles">
                         @Body
                     </div>
                 </ContentTemplate>
@@ -26,4 +26,5 @@
     [Parameter] public RenderFragment? IconSVG { get; set; } 
     [Parameter] public string Title { get; set; }
     [Parameter] public RenderFragment? Body { get; set; } 
+    [Parameter] public string BodyStyles { get; set; } 
 }

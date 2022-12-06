@@ -111,6 +111,14 @@ p, h1, h2, h3, h4, h5, h6 {
     fill: var(--primary-text-color);
 }
 
+.ba-btn.e-btn.e-primary:hover {
+    background-color: var(--primary);
+}
+
+.ba-btn.e-btn.e-primary:hover .ba-i.e-btn-icon.e-icon-left svg {
+    fill: var(--primary-text-color);
+}
+
 .ba-btn-round {
     display: flex;
     justify-content: center;

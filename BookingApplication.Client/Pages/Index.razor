@@ -9,7 +9,7 @@
 </div>
 
 <div class="collapsibles">
-    <Collapsible Title="Primary Passenger Information">
+    <Collapsible Title="Primary Passenger Information" BodyStyles="padding: 0 144px 0 144px;">
         <IconSVG>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.666748C4.48 0.666748 0 5.14675 0 10.6667C0 16.1867 4.48 20.6667 10 
@@ -53,7 +53,65 @@
             
         </Body>
     </Collapsible>
-    <Collapsible Title="Primary Passenger Information">
+    <Collapsible Title="Additional Passengers">
+        <IconSVG>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.666748C4.48 0.666748 0 5.14675 0 10.6667C0 16.1867 4.48 20.6667 10 
+                    20.6667C15.52 20.6667 20 16.1867 20 10.6667C20 5.14675 15.52 0.666748 10 0.666748ZM16.36 15.4967C14.93 13.7567 
+                    11.46 13.1667 10 13.1667C8.54 13.1667 5.07 13.7567 3.64 15.4967C2.62 14.1567 2 12.4867 2 10.6667C2 6.25675 5.59 
+                    2.66675 10 2.66675C14.41 2.66675 18 6.25675 18 10.6667C18 12.4867 17.38 14.1567 16.36 15.4967ZM6.5 8.16675C6.5 
+                    6.22675 8.06 4.66675 10 4.66675C11.94 4.66675 13.5 6.22675 13.5 8.16675C13.5 10.1067 11.94 11.6667 10 11.6667C8.06 
+                    11.6667 6.5 10.1067 6.5 8.16675Z" fill="#0A0A0B"/>
+            </svg>
+        </IconSvg>
+        <Body>
+            <div class="removable-cards">
+                @for(int i = 1; i <= NumberOfPassengers; i++)
+                {
+                    <RemovableCard Title="@("Passenger # " + i)">
+                        <Body>
+                            <div class="tab-body">
+                                <div class="row">
+                                    <SfTextBox Placeholder='First Name' FloatLabelType="FloatLabelType.Auto"></SfTextBox>
+                                    <SfTextBox Placeholder='Last Name' FloatLabelType="FloatLabelType.Auto"></SfTextBox>
+                                </div>
+                                <div class="row">
+                                    <SfMaskedTextBox Mask="+ 1 (000) 000 - 00 - 00" Placeholder="Phone Number" FloatLabelType="FloatLabelType.Auto"></SfMaskedTextBox>
+                                    <SfTextBox Placeholder='Email Name' FloatLabelType="FloatLabelType.Auto"></SfTextBox>
+                                </div>
+                                <div class="row">
+                                    <SfTextBox Placeholder='Notes' FloatLabelType="FloatLabelType.Auto"></SfTextBox>
+                                </div>
+                                <div class="row checkbox-row">
+                                    <SfCheckBox Label="Include flight information" @bind-Checked="isChecked"></SfCheckBox>
+                                </div>
+                                <div class="row">
+                                    <SfDropDownList TValue="string" TItem="Games" Placeholder="Airport" DataSource="@LocalData" FloatLabelType="FloatLabelType.Auto">
+                                        <DropDownListFieldSettings Value="ID" Text="Text"></DropDownListFieldSettings>
+                                    </SfDropDownList>
+                                    <SfDropDownList TValue="string" TItem="Games" Placeholder="Airlines" DataSource="@LocalData" FloatLabelType="FloatLabelType.Auto">
+                                        <DropDownListFieldSettings Value="ID" Text="Text"></DropDownListFieldSettings>
+                                    </SfDropDownList>
+                                    <SfMaskedTextBox Mask="0000" Placeholder="Flight Number" FloatLabelType="FloatLabelType.Auto"></SfMaskedTextBox>
+                                </div>
+                            </div>
+                        </Body>
+                    </RemovableCard>
+                }
+                <div class="add-passenger">
+                    <SfButton CssClass="e-primary ba-btn">
+                        <span class="ba-i e-btn-icon e-icon-left">
+                            <svg width="12" height="11" viewBox="0 0 12 11" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.25 6.41699H6.75V10.917H5.25V6.41699H0.75V4.91699H5.25V0.416992H6.75V4.91699H11.25V6.41699Z"/>
+                            </svg>
+                        </span>
+                        Add Passenger
+                    </SfButton>
+                </div>
+            </div>
+        </Body>
+    </Collapsible>
+    <Collapsible Title="Additional Items" BodyStyles="padding: 12px 144px 0 144px;">
         <IconSVG>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.666748C4.48 0.666748 0 5.14675 0 10.6667C0 16.1867 4.48 20.6667 10 
@@ -120,4 +178,5 @@
         new Games() { ID= "Game9", Text= "Snooker" },
         new Games() { ID= "Game10", Text= "Tennis"},
     };
+    private int NumberOfPassengers = 2;
 }

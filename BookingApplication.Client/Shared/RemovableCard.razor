@@ -1,0 +1,35 @@
+<div class="removable-card">
+    <SfAccordion>
+        <AccordionItems>
+            <AccordionItem>
+                <HeaderTemplate>
+                    <div class="header">
+                        <div class="title">
+                            @Title
+                        </div>
+                        <div class="remove">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.25 6.91699V8.41699H11.75V6.91699H4.25ZM8 0.166992C3.86 0.166992 0.5 3.52699 
+                                    0.5 7.66699C0.5 11.807 3.86 15.167 8 15.167C12.14 15.167 15.5 11.807 15.5 7.66699C15.5 
+                                    3.52699 12.14 0.166992 8 0.166992ZM8 13.667C4.6925 13.667 2 10.9745 2 7.66699C2 4.35949 
+                                    4.6925 1.66699 8 1.66699C11.3075 1.66699 14 4.35949 14 7.66699C14 10.9745 11.3075 13.667 
+                                    8 13.667Z" fill="#F43F5E"/>
+                            </svg>
+                            <p>Remove</p>
+                        </div>
+                    </div>
+                </HeaderTemplate>
+                <ContentTemplate>
+                    <div class="body">
+                        @Body
+                    </div>
+                </ContentTemplate>
+            </AccordionItem>
+        </AccordionItems>
+    </SfAccordion>
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter] public RenderFragment? Body { get; set; } 
+}

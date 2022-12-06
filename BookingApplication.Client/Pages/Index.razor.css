@@ -31,3 +31,13 @@ h1 {
     flex-direction: column;
     gap: 24px;
 }
+
+.removable-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.add-passenger {
+    margin-left: auto;
+}
