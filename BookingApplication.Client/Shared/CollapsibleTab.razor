@@ -1,0 +1,26 @@
+<div class="collapsible-tab">
+    <div class="header">
+        <div class="header-title">
+            <div class="icon">
+                @IconSVG
+            </div>
+            <div class="title">
+                @Title
+            </div>
+        </div>
+        <div class="collapse-icon">
+            <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.333008 7.00016L6.99967 0.333496L13.6663 7.00016H0.333008Z" fill="#0A0A0B"/>
+            </svg>
+        </div>
+    </div>
+    <div class="body">
+        @Body
+    </div>
+</div>
+
+@code {
+    [Parameter] public RenderFragment? IconSVG { get; set; } 
+    [Parameter] public string Title { get; set; }
+    [Parameter] public RenderFragment? Body { get; set; } 
+}

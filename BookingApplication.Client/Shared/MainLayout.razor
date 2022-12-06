@@ -9,6 +9,7 @@
         --primary-text-color: @OperatorContext.PrimaryTextColor;
         --secondary: @OperatorContext.SecondaryColor;
         --secondary-text-color: @OperatorContext.SecondaryTextColor;
+        --accent: @OperatorContext.AccentColor;
     }
 </style>
 
@@ -23,14 +24,17 @@
 @code{
     @* public string Token { get; set; } = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9+eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIxMzIyIiwiZXhwIjoxNjY5NDMxNjc0fQ+Mnq5Rm7Fusm1fCic3scoSHkvk2S_qD6oHnxey23ONcodtMdmz20IlVQizPUHtuFvyLTW0IdoZBDcA8Mvm999nQ"; *@
     public string Token { get; set; } = string.Empty;
-    @* public OperatorContext OperatorContext { get; set; } = new OperatorContext() 
+    public OperatorContext OperatorContext { get; set; } = new OperatorContext() 
             { PrimaryColor = "#373960", PrimaryTextColor = "#ffffff", 
-            SecondaryColor = "#ffffff", SecondaryTextColor = "#373960", CompanyEmail = "limocompanyrandom@email.com",
-            CompanyPrimaryPhone = "+ 1 (425) 555 - 26 - 71", CompanySecondaryPhone = "+ 1 (555) 666 - 22 - 11" }; *@
-    public OperatorContext OperatorContext { get; set; } = new OperatorContext()
+            SecondaryColor = "#ffffff", SecondaryTextColor = "#373960",
+            AccentColor = "#DADEEF", CompanyEmail = "limocompanyrandom@email.com",
+            CompanyPrimaryPhone = "+ 1 (425) 555 - 26 - 71", CompanySecondaryPhone = "+ 1 (555) 666 - 22 - 11" };
+
+    @* public OperatorContext OperatorContext { get; set; } = new OperatorContext()
         { PrimaryColor = "#52ffee", PrimaryTextColor = "#000000", 
-        SecondaryColor = "#000000", SecondaryTextColor = "#52ffee", CompanyEmail = "limocompanyrandom@email.com",
-        CompanyPrimaryPhone = "+ 1 (425) 555 - 26 - 71", CompanySecondaryPhone = "+ 1 (555) 666 - 22 - 11" };
+        SecondaryColor = "#000000", SecondaryTextColor = "#52ffee",
+        AccentColor = "#EA88E8", CompanyEmail = "limocompanyrandom@email.com",
+        CompanyPrimaryPhone = "+ 1 (425) 555 - 26 - 71", CompanySecondaryPhone = "+ 1 (555) 666 - 22 - 11" }; *@
 
     protected override void OnParametersSet()
     {
