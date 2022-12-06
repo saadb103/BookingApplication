@@ -9,3 +9,25 @@ h1 {
     margin-top: 20px;
     margin-bottom: 32px;
 }
+
+.tab-body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.checkbox-row {
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.collapsibles {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

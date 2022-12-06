@@ -1,0 +1,29 @@
+<div class="collapsible">
+    <SfAccordion>
+        <AccordionItems>
+            <AccordionItem>
+                <HeaderTemplate>
+                    <div class="header">
+                        <div class="icon">
+                            @IconSVG
+                        </div>
+                        <div class="title">
+                            @Title
+                        </div>
+                    </div>
+                </HeaderTemplate>
+                <ContentTemplate>
+                    <div class="body">
+                        @Body
+                    </div>
+                </ContentTemplate>
+            </AccordionItem>
+        </AccordionItems>
+    </SfAccordion>
+</div>
+
+@code {
+    [Parameter] public RenderFragment? IconSVG { get; set; } 
+    [Parameter] public string Title { get; set; }
+    [Parameter] public RenderFragment? Body { get; set; } 
+}
