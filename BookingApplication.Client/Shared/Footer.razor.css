@@ -1,0 +1,71 @@
+.footer {
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+
+    padding: 40px 40px 60px 40px;
+    background-color: var(--primary);
+
+    font-weight: 500;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    cursor: pointer;
+}
+
+.logo span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 33px;
+    line-height: 41px;
+    color: var(--primary-text-color);
+}
+
+.logo svg {
+    fill: var(--primary-text-color);
+}
+
+.logo-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.navigation {
+    display: flex;
+    gap: 40px;
+}
+
+.navigation > a {
+    text-decoration: none;
+    color: white;
+}
+
+.social-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: end;
+}
+
+.social-actions ::deep button:last-child {
+    margin-left: 15px;
+}

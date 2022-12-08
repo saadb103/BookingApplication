@@ -41,3 +41,43 @@ h1 {
 .add-passenger {
     margin-left: auto;
 }
+
+.additional-items-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.additional-items-row {
+    display: grid;
+    grid-template-columns: 35% 10% 10% 35% 10%;
+}
+
+.additional-items-row > div {
+    display: flex;
+    gap: 12px;
+}
+
+.additional-items-row ::deep .e-btn.e-round.ba-btn-round {
+    width: 24px;
+    height: 24px;
+    background-color: #F3F5FB;
+    border: none;
+}
+
+.additional-items-row .spacer {
+    flex: 1;
+}
+
+.additional-items-separator {
+    margin-top: 37px;
+    margin-bottom: 20px;
+
+    border: 0.5px solid #DADEEF;
+}
+
+.additional-items-total {
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+}
